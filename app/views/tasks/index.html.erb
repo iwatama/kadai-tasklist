@@ -1,31 +1,33 @@
 <h1>taskList</h1>
-<ul>
-    
+<% if @tasks.any? %>
     <table class = "table table-striped">
-        <thead></thead>
-        <tr>
-            <th>id</th>
-            <th>title</th>
-            <th>task</th>
-            <th>status</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>title</th>
+                <th>task</th>
+                <th>status</th>
+            </tr>
         </thead>
         <tbody>
-        <% @tasks.each do |task| %>
-            <tr>
-                <td><%= link_to task.id, task %></td>
-                <td><%= task.title %></td>
-                <td><%= task.content %></td>
-                <td><%= task.status %></td>
-            </tr>
-        <% end %>
+            <% @tasks.each do |task| %>
+                <tr>
+                    <td><%= link_to task.id, task %></td>
+                    <td><%= task.title %></td>
+                    <td><%= task.content %></td>
+                    <td><%= task.status %></td>
+                </tr>
+            <% end %>
         </tbody>
     </table>
-</ul>
-<div>
-<%= paginate @tasks %>
-</div>
-
+    <div>
+        <%= paginate @tasks %>
+    </div>
+<% end %>
 <%= link_to '新規taskの作成', new_task_path, class:"btn btn-primary" %>
+<span class="glyphicon glyphicon-heart"></span>
+<span class="glyphicon glyphicon-star"></span>
+<span class="glyphicon glyphicon-music"></span>
+<span class="glyphicon glyphicon-search"></span>
 
 
