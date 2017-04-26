@@ -1,6 +1,5 @@
 <ul class="media-list">
-  
-  
+
     <% @tasks.each do |task| %>
         <% user = task.user %>
         <li class="media">
@@ -14,9 +13,14 @@
                     <%= link_to user.name, user_path(user) %> <span class="text-muted">posted at <%= task.created_at %></span>
                 </div>
                 <div>
-                    <p><%= task.title %></p>
-                    <p><%= task.content %></p>
-                    <p><%= task.status %></p>
+                    <p>id：<%= task.id %></p>
+                    <div>
+                        <table class="table table-striped table-bordered" >
+                            <tr><th width="20%">title</th><td><%= task.title %></td></tr>
+                            <tr><th>task</th><td><%= task.content %></td></tr>
+                            <tr><th>status</th><td><%= task.status %></td></tr>
+                        </table>
+                    </div>
                 </div>
                 <div>
                     <% if current_user == task.user %>
@@ -24,9 +28,6 @@
                     <% end %>
                 </div>
             </div>
-            
-            
-            
         </li>
     <% end %>
     <%= paginate tasks %>
